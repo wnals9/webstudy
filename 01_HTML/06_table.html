@@ -118,17 +118,80 @@
     </tfoot>
   </table>
   
+  <hr>
+
+  
+  <!--
+    셀 병합
+    1. <td> 태그에 병합 속성을 추가한다.
+    2. 병합 속성
+      1) colspan : 열 병합, 좌우 셀을 병합
+      2) rowspan : 행 병합, 상하 셀을 병합
+  -->
+
+  <!-- 열 병합 : 좌우 셀을 병합 -->
   <table border="1">
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>1열</td>
+        <td>2열</td>
+        <td>3열</td>
+      </tr>
+      <tr>
+        <td>1열</td>
+        <td colspan="2">2열</td>
+      </tr>
+      <tr>
+        <td colspan="3">1열</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 행 병합 : 상하 셀을 병합 -->
+  <table border="1">
+    <tbody>
+      <tr>
+        <td>1행</td>
+        <td>1행</td>
+        <td rowspan="3">1행</td>
+      </tr>
+      <tr>
+        <td>2행</td>
+        <td rowspan="2">2행</td>
+      </tr>
+      <tr>
+        <td>3행</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- 이미지가 포함된 테이블 -->
+  <table>
+    <tbody>
+      <tr>
+        <td><img src="../../assets/image/fruit1.jpg" alt="베리" width="192px" height="128px"></td>
+        <td><img src="../../assets/image/fruit2.jpg" alt="아보카도" width="192px" height="128px"></td>
+        <td><img src="../../assets/image/fruit3.jpg" alt="바나나 width="192px" height="128px"></td>
+        <td><img src="../../assets/image/fruit4.jpg" alt="라임" width="192px" height="128px"></td>
+        <td><img src="../../assets/image/fruit5.jpg" alt="블루베리" width="192px" height="128px"></td>
+      </tr>
+      <tr>
+        <td>1000원</td>
+        <td>2000원</td>
+        <td>3000원</td>
+        <td>4000원</td>
+        <td>5000원</td>
+      </tr>
+      <tr>
+        <td>베리</td>
+        <td>아보카도</td>
+        <td>바나나</td>
+        <td>라임</td>
+        <td>블루베리</td>
+      </tr>
+    </tbody>
   </table>
 
 </body>
