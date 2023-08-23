@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css);
+  </style>
+</head>
+<body>
+
+  <!--
+    id 속성
+    1. 모든 태그가 가질 수 있는 전역 속성이다.
+    2. 문서 내의 모든 요소는 중복된 id를 가질 수 없다.
+    3. id 선택자
+      #id
+  -->
+  
+  <style>
+    #box1 {
+      color: crimson;
+    }
+    #box2 {
+      color: teal;
+    }
+  </style>
+
+  <div id="box1">
+    Hello World
+  </div>
+
+  <div id="box2">
+    Hello World
+  </div>
+
+  <hr>
+
+  <!--
+    class 속성
+    1. 모든 태그가 가질 수 있는 전역 속성이다.
+    2. 문서 내의 모든 요소는 동일한 class를 가질 수 있다.
+    3. 동일한 특성을 가지는 요소들은 동일한 class 속성을 가진다.
+    4. 하나의 요소가 여러 개의 class를 가질 수 있다. (각 class를 공백으로 구분)
+    5. class 선택자
+      .class
+  -->
+
+  <style>
+
+    .green {
+      color: green;
+    }
+    .bold {
+      font-weight: 900;
+    }
+
+  </style>
+
+  <div class="green bold">
+    안녕하세요
+  </div>
+
+  <div class="green">
+    안녕하세요
+  </div>
+
+  <hr>
+
+  <style>
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css);
+  </style>
+
+  <div>
+    <ul>
+      <li>구글<a href="https://www.google.com/"><i class="fa-brands fa-google"></i></a></li>
+    </ul>
+  </div>
+
+
+</body>
+</html>
