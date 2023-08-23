@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
   <!--
     id 속성
     1. 모든 태그가 가질 수 있는 전역 속성이다.
@@ -35,7 +36,9 @@
     Hello World
   </div>
 
+
   <hr>
+
 
   <!--
     class 속성
@@ -66,17 +69,103 @@
     안녕하세요
   </div>
 
+
   <hr>
 
+
   <style>
-    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css);
+
+    /* 자식 선택자 : 부모 > 자식 */
+    ul > li {
+      color: orange;
+    }
+    ul > li > a {
+      color: orangered;
+    }
+
   </style>
 
   <div>
     <ul>
-      <li>구글<a href="https://www.google.com/"><i class="fa-brands fa-google"></i></a></li>
+      <li>구글 <a href="https://www.google.com/"><i class="fa-brands fa-google"></i></a></li>
+      <li>유튜브 <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a></li>
+      <li>애플 <a href="https://www.apple.com/kr/store"><i class="fa-brands fa-apple"></i></a></li>
     </ul>
   </div>
+
+
+  <hr>
+  
+
+  <style>
+    
+    /* 후손 선택자 : 조상 후손 */
+    ol label {
+      color: violet;
+    }
+
+  </style>
+
+  <div>
+    <ol>
+      <li>
+        <input type="radio" name="wakeup" id="six">
+        <label for="six">6시</label>
+      </li>
+      <li>
+        <input type="radio" name="wakeup" id="seven">
+        <label for="seven">7시</label>
+      </li>
+      <li>
+        <input type="radio" name="wakeup" id="eight">
+        <label for="eight">8시</label>
+      </li>
+    </ol>
+  </div>
+
+  
+  <hr>
+
+
+  <style>
+
+    /* 모든 형제 선택자 : 형제 ~ 형제 */
+    .asia > h4 ~ p {
+      color: rgb(187, 187, 187);
+    }
+
+  </style>
+
+  <div class="asia">
+    <h4>아시아</h4>
+    <p>한국</p>
+    <p>일본</p>
+    <p>중국</p>
+  </div>
+
+
+  <hr>
+
+  
+  <style>
+
+    /* 인접 형제 선택자 : 형제 + 형제 */
+    .hobby > h4 + input + label {
+      color: #c2c3c4;
+    }
+
+  </style>
+
+  <div class="hobby">
+    <h4>취미</h4>
+    <input type="checkbox" id="firness">
+    <label for="fitness">헬스</label>
+    <input type="checkbox" id="travel">
+    <label for="travel">여행</label>
+    <input type="checkbox" id="cook">
+    <label fir="cook">요리</label>
+  </div>
+
 
 
 </body>
