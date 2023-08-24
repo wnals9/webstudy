@@ -7,6 +7,7 @@
 </head>
 <body>
 
+
   <style>
     /* box 크기와 배경 이미지 크기를 동일하게 맞춤 */
     .box1 {
@@ -24,6 +25,7 @@
 
 
   <style>
+    /* box보다 작은 이미지 처리 */
     .box2 {
       box-sizing: border-box;
       width: 500px;
@@ -56,6 +58,30 @@
     }
   </style>
   <div class="box3"></div>
+
+
+  <hr>
+
+
+  <style>
+    /* 이미지의 일부만 표시하기 */
+    .box4 {
+      box-sizing: border-box;
+      width: 115px;
+      height: 115px;
+      background-image: url(../../assets/image/weather.png);
+      background-position: -145px -145px;  /* 가로 세로 순으로 이동, -145px은 배경이 왼쪽으로 145px 이동 */
+    }
+    .box5 {
+      box-sizing: border-box;
+      width: 120px;
+      height: 220px;
+      background-image: url(../../assets/image/logo.png);
+      background-position: -1160px -175px;
+    }
+  </style>
+  <div class="box4"></div>
+  <div class="box5"></div>
 
   
 </body>
