@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-
+  
   <style>
 
     /*
@@ -22,7 +22,7 @@
 
     /*
       미디어 쿼리
-      1. 화면의 크기 변화를 감지하는 CSS모듈이다.
+      1. 화면의 크기 변화를 감지하는 CSS 모듈이다.
       2. 선언 : @media
       3. 종류 : screen(화면), speech(낭독기), print(출력물), all(모든 미디어)
       4. 조건 예시
@@ -32,8 +32,16 @@
         4) orientation: portrait  화면을 세워서 볼 때
         5) orientation: landscape 화면을 눕혀서 볼 때
     */
-
-
+    
+    
+    
+    /*
+    화면 크기에 따른 레이아웃 변경 실습
+    1. 400px 이하    : 4행 1열
+    2. 401px ~ 800px : 2행 2열
+    3. 801px 이상    : 1행 4열
+    */
+    
     body {
       width: 90%;
       margin: 0 auto;
@@ -43,12 +51,6 @@
       padding: 0;
       margin: 0;
     }
-
-
-    /*
-      화면 크기에 따른 레이아웃 변경
-      1. 400px 이하인 경우 : 
-    */
 
     @media screen and (max-width: 400px) {
       .wrap {
@@ -61,7 +63,7 @@
       }
     }
 
-    @media screen and (min-width: 401px) and (max-width: 800px){
+    @media screen and (min-width: 401px) and (max-width: 800px) {
       .wrap {
         width: 100%;
         display: flex;
@@ -74,13 +76,12 @@
       }
     }
 
-
-    @media screen and (min-width: 801px){
+    @media screen and (min-width: 801px) {
       .wrap {
         width: 100%;
         max-width: 1000px;
         display: flex;
-        justify-content: sacpe-btween;
+        justify-content: space-between;
       }
       .wrap > div {
         width: 24%;
@@ -89,8 +90,8 @@
       }
     }
 
-    </style>
-  
+  </style>
+
   <div class="wrap">
     <div>box1</div>
     <div>box2</div>
