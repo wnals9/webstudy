@@ -90,13 +90,12 @@
     }
     myFunc2();
 
-    
     // 2) 자기 호출
     (function(){
       console.log('자기 호출 실행');
     })();
 
-
+    
     // 3) 이벤트 리스너로 등록하기
     document.addEventListener('dblclick', function(){
       console.log('이벤트 리스너 실행');
