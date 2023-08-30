@@ -161,6 +161,96 @@
     myFunc6(10);
     myFunc6();
 
+    // 전개 연산자(...)
+    function myFunc7(...a){
+      for(let i = 0; i < a.length; i++){
+        console.log(a[i])
+      }
+    }
+    myFunc7(1, 2, 3, 4, 5);
+
+    // arguments 객체
+    function myFunc8(){
+      for(let i = 0; i < arguments.length; i++){
+        console.log(arguments[i]);
+      }
+    }
+    myFunc8(6, 7, 8, 9, 10);
+
+
+  </script>
+
+
+  <script>
+
+    /*
+      반환(return)
+      1. 반환 타입을 작성하지 않는다.
+      2. return 반환값; 을 통해서 값을 반환할 수 있다.
+      3. return; 을 통해서 함수를 종료할 수 있다.
+    */
+
+    function myMax(a, b, c){
+      if(isNaN(a) || isNaN(b) || isNaN(c)){  // a,b,c중 하나라도 숫자가 아니면(Not a Number)
+        return;
+      }
+      let max = a;
+      if(b > max) max = b;
+      if(c > max) max = c;
+      return max;
+    }
+    function myMin(a, b, c){
+      if(isNaN(a) || isNaN(b) || isNaN(c)){
+        return;
+      }
+      let min = a;
+      if(b < min) min = b;
+      if(c < min) min = c;
+      return min;
+    }
+    function myMedian(a, b, c){
+      if(isNaN(a) || isNaN(b) || isNaN(c)){
+        return;
+      }
+      /*
+      let median;
+      if(a >= b){
+        if(b >= c) median = b;      // a b c
+        else if(a <= c) median = a; // c a b
+        else median = c;            // a c b
+      } 
+      else if(a > c) median = a;    // b a c
+      else if(b > c) median = c;    // b c a
+      else median = b;              // c b a
+      return median;
+    }
+    */
+    let median;
+    if((b >= a && a >= c) || (c >= a && a >= b)){  // b a c, c a b
+      median = a;
+    } else if((a >=b && b >= c) || (c >= b && b >= a)) { // a b c, c b a
+      median = b;
+    } else {
+     median = c;
+    }
+    return median;
+  }
+   
+   console.log(myMax(1, 2, 3));
+   console.log(myMin(1, 2, 3));
+   console.log(myMedian(1, 2, 3));
+
+  </script>
+
+  
+  <script>
+
+    /*
+      콜백 함수
+      1. 함수에 함수를 전달할 수 있는 개념이다.
+      2. 인수(함수) -> 매개변수(함수를 저장한 변수) 흐름으로 동작한다.
+      
+    */
 
   </script>
   
