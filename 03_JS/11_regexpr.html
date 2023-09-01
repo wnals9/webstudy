@@ -233,10 +233,10 @@
       // 비밀번호 체크
       var userPw = document.getElementById('user_pw').value;
       var userPw2 = document.getElementById('user_pw2').value;
-      var validUserPwCount = /[A-z]/.test(pw)
-                           + /[a-z]/.test(pw)
-                           + /[0-9]/.test(pw)
-                           + /[^A-Za-z0-9]/.test(pw);
+      var validUserPwCount = /[A-z]/.test(userPw)
+                           + /[a-z]/.test(userPw)
+                           + /[0-9]/.test(userPw)
+                           + /[^A-Za-z0-9]/.test(userPw);
       if(userPw.length < 8 || userPw.length > 20 || validUserPwCount < 2 || userPw !== userPw2){
         alert('올바른 비밀번호를 입력하세요.');
         document.getElementById('user_pw').focus();
