@@ -85,9 +85,17 @@
       xhr.addEventListener('readystatechange', function(){
         if(xhr.readyState === 4){
           if(xhr.status === 200){
+            var date = xhr.responseXML;
             var str = '';
-            xhr.responseXML;
-            document.getElementById('xml_response1').textContent = str;
+            var title = date.getElementsByTagName('title');
+            var author = date.getElementsByTagName('author');
+            for(let i = 0; i < title.length; i++){
+              str += '<ul>'
+              str += '<li>' + title[i].textContent + '</li>'
+              str += '<li>' + author[i].textContent + '</li>'
+              str += '</ul>';
+            }
+            document.getElementById('xml_response1').innerHTML = str;
           }
         }
       })
@@ -105,6 +113,30 @@
     <div id="xml_response2"></div>
   </div>
   <script>
+
+    document.getElementById('btn_xml_request2').addEventListener('click', function(){
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', 'book2.xml', true);
+      xhr.send();
+      xhr.addEventListener('readystatechange', function(){
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            var data = xhr.responseXML;
+            var book = data.getElementsByTagName('book');
+            var str = '';
+            for(let i = 0; i < book.length; i++){
+              str += '<ul>';
+              str += '<li>' + book[i].getAttribute('title') + '</li>';
+              str += '<li>' + book[i].getAttribute('author') + '</li>';
+              str += '</ul>';
+            }
+            document.getElementById('xml_response2').innerHTML = str;
+          }
+        }
+      })
+
+    })
 
   </script>
 
