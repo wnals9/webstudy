@@ -9,7 +9,7 @@
       box-sizing: border-box;
     }
     .wrap {
-      width: 640px;
+      width: 615px;
       height: 480px;
       margin: 10px auto;
     }
@@ -28,12 +28,12 @@
       이벤트 타입 : load
       이벤트 설명 : 본문을 모두 읽은 뒤에 이벤트 리스너를 처리하는 이벤트
     */
-   
+
     addEventListener('load', function(){
       sendMsg();
       closeWindow();
     })
-
+    
     function sendMsg(){
       document.getElementById('btn_send').addEventListener('click', function(){
         // 12_browser_object.html           ←  12_popup.html
@@ -48,7 +48,7 @@
         window.close();
       })
     }
-
+ 
   </script>
 
   <div class="wrap">
