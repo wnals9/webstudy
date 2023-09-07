@@ -213,7 +213,107 @@
 
   </script>
 
-  
-  
+<hr>
+
+
+  <!-- 제목(title), 이미지(image + link), 저자(author), 판매가(discount), 출판사(publisher), 출판일(pubdate), ISBN(isbn), 설명(description) -->
+  <!-- 이미지를 클릭하면 링크가 열리도록 표시하기 -->
+  <!-- 설명은 최대 100글자만 표시하기 -->
+
+  <!--
+    ----------------------              <div class="book">
+    |          | 제목    |                <div class="image">
+    |          | 저자    |                  <a href="값">
+    |          | 판매가  |                     <img src="값">
+    |  이미지  | 출판사  |   X  10          </a>
+    |          | 출판일  |                 </div>
+    |          | ISBN    |                <div class="content">
+    |          | 출판일  |                  <ul>
+    |          | 설명    |                     <li>제목: 값</li>
+    ----------------------                      ...
+                                            </ul>
+                                          </div>
+                                        </div>
+  -->
+
+<div id="box5">
+  <button id="btn5">book.xml 가져오기</button>
+</div>
+<script>
+  // getBookXML 함수 정의
+  function getBookXML(){
+    $('#btn5').click(function(){
+      $.ajax({
+        type: 'get',
+        url: 'book.xml',
+        async: true,
+        dataType: 'xml',
+        success: function(resData){
+          $.each($(resData).find('item'), function(i, elem){
+            var image = $('<div>').addClass('image');
+            image.append($('<a>').attr('href', $(elem).find('link').text()).append($('<img>').attr('src', $(elem).find('image').text())));
+            var content = $('<div>').addClass('content');
+            var ul = $('<ul>');
+            ul.append($('<li>').text('제목: ' + $(elem).find('title').text()));  
+            ul.append($('<li>').text('저자: ' + $(elem).find('author').text()));  
+            ul.append($('<li>').text('판매가: ' + $(elem).find('discount').text()));  
+            ul.append($('<li>').text('출판사: ' + $(elem).find('publisher').text()));  
+            ul.append($('<li>').text('출판일: ' + $(elem).find('pubdate').text()));  
+            ul.append($('<li>').text('isbn: ' + $(elem).find('isbn').text()));  
+            ul.append($('<li>').text('설명: ' + $(elem).find('description').text()));  
+            var book = $('<div>').addClass('book')
+            content.append(ul);
+            book.append(image);
+            book.append(content);
+            $('#box5').append(book);
+          })
+        },
+        error: function(jqXHR){
+          Error(jqXHR.status + '(' + jqXHR.statusText + ')');
+        }
+      })
+    })
+  }
+  // getBookXML 함수 호출
+  getBookXML();
+
+</script>
+<style>
+
+  #box5 div {
+    box-sizing: border-box;
+  }
+
+  #box5 .book {
+    box-sizing: 800px;
+    border: 1px solid gray;
+    display: flex;
+  }
+
+  #box5 .image {
+    width: 150px;
+  }
+
+  #box5 .image a img {
+    width: 150px;
+  }
+
+</style>
+
+<hr>
+
+
+<div id="box6">
+  <button id="btn6">book.json 가져오기</button>
+</div>
+<script>
+
+</script>
+
+
+
+
+
+
 </body>
 </html>
