@@ -22,6 +22,8 @@
         /* 응답 */
         dataType: 'xml',             // 응답 데이터의 타입(text, xml, json 등)
         success: function(resData){  // 매개변수 data로 응답 데이터가 전달됨 (resData = xhr.responseXML 또는 resData = xhr.responseText)
+          // 기존 목록 제거하기
+          $('#box1').find('ul').remove();
           // resData에서 <product> 태그만 가져오기
           var product = $(resData).find('product');  // JavaScript는 var product = resData.getElementsByTagName('product')
           $.each(product, function(i, elem){
@@ -35,13 +37,183 @@
             $('#box1').append(ul);
           });
         },
-        error: function(){
-
+        error: function(jqXHR){  // jqXHR 객체 : 에러에 관한 정보를 담고 있는 객체
+          // <div id="box1"> 태그를 jQuery 객체로 가져옴
+          var box1 = $('#box1');
+          box1.append($('<div>').text('응답코드 ' + jqXHR.status));
+          box1.append($('<div>').text('응답코드 텍스트 ' + jqXHR.statusText));
+          box1.append($('<div>').text('응답 텍스트 ' + jqXHR.responseText));
         }
       })
-
     })
   </script>
+
+
+  <hr>
+
+
+  <div id="box2">
+    <button id="btn2">XML요청2</button>
+  </div>
+  <script>
+    $('#btn2').click(function(){
+      $.ajax({
+        /* 요청 */
+        type: 'get',
+        url: 'product2.xml',
+        async: true,
+        /* 응답 */
+        dataType: 'xml',
+        success: function(resData){
+          // 기존 목록 제거하기
+          $('#box2').find('div').remove();
+          // <div class="product_list"> 태그를 jQuery 객체로 만들기
+          var productList = $('<div>').addClass('product_list');
+          // resData에서 <product> 태그를 가져오기
+          $.each($(resData).find('product'), function(i, elem){
+            // <div class="product"> 태그를 jQuery 객체로 만들기
+            var div = $('<div>').addClass('product');
+            // <div class="product"> 태그에 model, maker, price 속성(attribute)값 넣기
+            div.append($('<strong>').text($(elem).attr('model')));
+            div.append($('<em>').text($(elem).attr('maker')));
+            div.append($('<mark>').text($(elem).attr('price')));
+            // <div class="product_list"> 태그에 <div class="product"> 태그 넣기
+            productList.append(div);
+            // <div id="box2"> 태그에 <div class="product_list"> 태그 너기
+            $('#box2').append(productList);
+          })
+        },
+        error: function(jqXHR){
+          alert(jqXHR.status + '(' + jqXHR.statusText + ')');
+        }
+      })
+    })
+  </script>
+  <style>
+    #box2 div {
+      box-sizing: border-box;
+      border: 1px solid gray;
+    }
+    #box2 .product_list {
+      width: 400px;
+      display: flex;
+      justify-content: space-between;
+    }
+    #box2 .product {
+      width: 100px;
+      padding: 20px 10px;
+      text-align: center;
+    }
+    #box2 .product * {
+      display: block;
+    }
+  </style>
+
+
+  <hr>
+
+
+  <div id="box3">
+    <button id="btn3">JSON요청1</button>
+  </div>
+  <script>
+    $('#btn3').click(function(){
+      $.ajax({
+        /* 요청 */
+        type: 'get',
+        url: 'product1.json',
+        async: true,
+        /* 응답 */
+        dataType: 'json',
+        success: function(resData){  // resData = JSON.parse(xhr.reponseText)
+          $('#box3').find('div').remove();
+          myFunc1(resData);  // myFunc1 함수 호출
+        },
+        error: function(jqXHR){
+          alert(jqXHR.status + '(' + jqXHR.statusText + ')');
+        }
+      })
+    })
+    // myFunc1 함수 정의
+    function myFunc1(resData){
+      var productList = $('<div>').addClass('product_list');
+      $.each(resData, function(i, elem){
+        var ul = $('<ul>').addClass('product');
+        ul.append($('<li>').text(elem.maker));
+        ul.append($('<li>').text(elem.model));
+        ul.append($('<li>').text(elem.price));
+        productList.append(ul);
+      })
+      $('#box3').append(productList);
+    }
+  </script>
+  <style>
+      #box3 div {
+        box-sizing: border-box;
+        border: 1px solid gray;
+      }
+      #box3 ul {
+        box-sizing: border-box;
+        border: 1px solid gray;
+      }
+      #box3 .product_list {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+      }
+      #box3 .product {
+        width: 100px;
+        padding: 20px 10px;
+        text-align: center;
+      }
+      #box3 .product * {
+        display: block;
+      }
+  </style>
+
+
+  <hr>
+
+
+  <div id="box4">
+    <button id="btn4">JSON요청2</button>
+  </div>
+  <script>
+    $('#btn4').click(function(){
+      $.ajax({
+        /* 요청 */
+        type: 'get',
+        url: 'product2.json',
+        async: true,  
+        /* 응답 */
+        dataType: 'json',
+        success: function(resData){           // resData = JSON.parse(xhr.responseText)
+          $('#box4').find('table').remove();  // 기존 테이블 제거하기
+          myFunc2(resData);                   // myFunc2 함수 호출
+        },
+        error: function(jqXHR){
+          alert(jqXHR.status + '(' + jqXHR.statusText + ')');
+        }
+      })
+    })
+    function myFunc2(resData){
+      var table = $('<table border="1"><thead><tr><td>순번</td><td>제조사</td><td>상품</td><td>가격</td></tr></thead></table>');
+      $.each(resData.products, function(i, elem){
+        var tr = $('<tr>');
+        tr.append($('<td>').text(i + 1));
+        tr.append($('<td>').text(elem.maker));
+        tr.append($('<td>').text(elem.price));
+        tr.append($('<td>').text(elem.model));
+        table.append(tr);
+        })
+      $('#box4').append(table);
+    }
+
+
+
+  </script>
+
+  
   
 </body>
 </html>
