@@ -307,6 +307,18 @@
   <button id="btn6">book.json 가져오기</button>
 </div>
 <script>
+  function getBookJSON(){
+    $.ajax({
+      type: 'get',
+      url: 'book.json',
+      async: true,
+      dataType: 'json',
+      success: function(resData){
+        var image = $('<div>').addClass('image')
+        $.each()
+      }
+    })
+  }
 
 </script>
 
